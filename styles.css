@@ -1,1 +1,76 @@
-soon
+:root {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1.5rem;
+}
+
+
+.skills-grid h5 {
+margin-bottom: 0.5rem;
+}
+
+
+.skills-grid ul {
+list-style: none;
+}
+
+
+.skills-grid li {
+margin-bottom: 0.3rem;
+}
+
+
+/* Buttons & links */
+.btn {
+padding: 0.6rem 1.2rem;
+border-radius: 999px;
+text-decoration: none;
+font-size: 0.9rem;
+}
+
+
+.btn.primary {
+background: #fff;
+color: var(--navy);
+}
+
+
+.btn.secondary {
+border: 1px solid #fff;
+color: #fff;
+}
+
+
+.link {
+color: var(--navy);
+text-decoration: none;
+font-weight: 500;
+}
+
+
+.muted {
+color: var(--muted);
+}
+
+
+/* Footer */
+.footer {
+text-align: center;
+padding: 1.5rem;
+font-size: 0.85rem;
+color: var(--muted);
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+.hero-content {
+grid-template-columns: 1fr;
+text-align: center;
+}
+
+
+.hero-image img {
+margin: 1.2rem auto 0;
+}
+}
