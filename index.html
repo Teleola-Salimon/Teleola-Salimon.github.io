@@ -10,36 +10,38 @@
 <body>
   <!-- Header / Hero -->
   <header class="hero" id="top">
-    <div class="hero-top">
-      <h1 class="brand-large">Teleola Salimon</h1>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">Teleola Salimon</div>
 
-      <!-- Profile image top-right (square with smooth edges) -->
-      <div class="hero-profile">
-        <img id="profileImage" src="images/profile.jpg" alt="Portrait of Teleola Salimon" width="120" height="120" />
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" id="navToggle" title="Open menu">
+        ☰
+      </button>
+
+      <div class="nav-links" id="primary-navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
+    </nav>
 
     <div class="hero-content">
       <div class="hero-text">
+        <h1>Teleola Salimon</h1>
         <h2>Investment Banker & Data Analyst <span class="muted">(in View)</span></h2>
         <p class="hero-summary">
           Economics graduate with hands-on experience in economic research, financial analysis,
           and data-driven insights to support strategic and investment decisions.
         </p>
-
-        <!-- Top-right links arranged as a 2x2 square, then CV download below -->
-        <div class="top-links-block" aria-label="Quick links">
-          <div class="link-grid" role="navigation" aria-label="Social and contact links">
-            <a class="social-link" href="https://github.com/Teleola-Salimon" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="social-link" href="mailto:teleolasalimon@gmail.com">Email</a>
-            <a class="social-link" href="#" aria-disabled="true">Medium</a>
-            <a class="social-link" href="https://www.linkedin.com/in/teleola-salimon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-
-          <div class="download-wrap">
-            <a class="btn primary" href="Teleola-Salimon-Resume.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-          </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="Teleola-Salimon-Resume.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/salimon-teleola" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
+      </div>
+
+      <div class="hero-image" aria-hidden="false">
+        <!-- Profile image expected to live at images/profile.jpg in the repo -->
+        <img id="profileImage" src="images/profile.jpg" alt="Portrait of Teleola Salimon" width="60" height="60" />
       </div>
     </div>
   </header>
@@ -48,25 +50,18 @@
   <section id="about" class="section" aria-labelledby="about-heading">
     <h3 id="about-heading">About</h3>
     <p class="about-text">
-      I am an Economics graduate from Covenant University with strong interests in investment banking, data analytics, and financial strategy. I have hands-on experience in financial analysis, portfolio performance review, and economic research through internships, consulting simulations, and independent projects. I am proficient in analytical tools including Excel, Bloomberg, and data visualization platforms, with a growing focus on applying data-driven insights to investment and business decisions. I am actively seeking opportunities to learn, contribute, and grow within high-impact financial and analytical environments.
+      I am an Economics graduate with strong interests in investment banking, data analytics, and
+      financial strategy. I have hands-on experience in financial analysis, portfolio performance
+      review, and economic research through internships, consulting simulations, and independent
+      projects. I am proficient in analytical tools including Excel, Bloomberg, and data
+      visualization platforms, with a growing focus on applying data-driven insights to
+      investment and business decisions. I am actively seeking opportunities to learn,
+      contribute, and grow within high-impact financial and analytical environments.
     </p>
   </section>
 
-  <!-- Skills (moved before Projects) -->
-  <section id="skills" class="section section-alt" aria-labelledby="skills-heading">
-    <h3 id="skills-heading">Skills</h3>
-
-    <div class="skills-grid-cards" role="list">
-      <div class="skill-card" role="listitem">Financial Analysis</div>
-      <div class="skill-card" role="listitem">Financial Economics</div>
-      <div class="skill-card" role="listitem">Business Data Analytics</div>
-      <div class="skill-card" role="listitem">Microsoft Office</div>
-      <div class="skill-card" role="listitem">Data Analysis</div>
-    </div>
-  </section>
-
   <!-- Projects -->
-  <section id="projects" class="section" aria-labelledby="projects-heading">
+  <section id="projects" class="section section-alt" aria-labelledby="projects-heading">
     <h3 id="projects-heading">Projects & Research</h3>
 
     <div class="project-card">
@@ -75,7 +70,7 @@
         Macroeconomic analysis covering inflation trends, fiscal policy, GDP performance,
         and forward-looking indicators to support strategic and investment decisions.
       </p>
-      <!-- All PDFs live in one Drive folder -->
+      <!-- All PDFs live in one Drive folder; pointing report links to that folder. Replace with direct file links if you have them. -->
       <a class="link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">View Report (PDF) — Nigerian Economic Overview</a>
     </div>
 
@@ -101,25 +96,77 @@
     </div>
   </section>
 
-  <!-- Contact (moved main quick links to top; keep contact details here) -->
+  <!-- Skills -->
+  <section id="skills" class="section" aria-labelledby="skills-heading">
+    <h3 id="skills-heading">Skills</h3>
+    <div class="skills-grid">
+      <div>
+        <h5>Core</h5>
+        <ul>
+          <li>Financial Analysis & Portfolio Review</li>
+          <li>Economic & Market Research</li>
+          <li>Data Analysis & Interpretation</li>
+          <li>Investment & Strategy Fundamentals</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Tools</h5>
+        <ul>
+          <li>Microsoft Excel, PowerPoint, Word</li>
+          <li>Bloomberg Terminal</li>
+          <li>Canva, CapCut, Premiere Pro</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Soft Skills</h5>
+        <ul>
+          <li>Analytical Thinking</li>
+          <li>Professional Communication</li>
+          <li>Collaboration & Stakeholder Engagement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section id="contact" class="section section-alt" aria-labelledby="contact-heading">
     <h3 id="contact-heading">Contact</h3>
     <p>Email: <a class="link" href="mailto:teleolasalimon@gmail.com">teleolasalimon@gmail.com</a></p>
-    <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/teleola-salimon" target="_blank" rel="noopener noreferrer">teleola-salimon</a></p>
+    <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/salimon-teleola" target="_blank" rel="noopener noreferrer">salimon-teleola</a></p>
     <p>Medium: <span class="muted">Articles coming soon</span></p>
   </section>
 
   <footer class="footer">© 2025 Teleola Salimon</footer>
 
-  <!-- Page scripts: profile image fallback (generate SVG avatar from initials) -->
+  <!-- Page scripts: nav toggle and profile image fallback (generate SVG avatar from initials) -->
   <script>
+    // Mobile nav toggle
+    (function () {
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('primary-navigation');
+
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.title = isOpen ? 'Close menu' : 'Open menu';
+      });
+
+      // Close mobile menu when clicking a link
+      navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && window.innerWidth <= 768) {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
     // Profile image fallback: if load fails, replace with generated SVG using initials
     (function () {
       const img = document.getElementById('profileImage');
       function createAvatarDataUrl(initials, bg = '#132f55', fg = '#ffffff') {
-        const size = 120;
-        const fontSize = 42;
-        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 ${size} ${size}'><rect width='100%' height='100%' fill='${bg}' rx='12' ry='12'/><text x='50%' y='50%' dy='.06em' text-anchor='middle' font-family='system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' font-size='${fontSize}' fill='${fg}'>${initials}</text></svg>`;
+        const size = 60;
+        const fontSize = 24;
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 ${size} ${size}'><rect width='100%' height='100%' fill='${bg}' rx='${size/2}' ry='${size/2}'/><text x='50%' y='50%' dy='.06em' text-anchor='middle' font-family='system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' font-size='${fontSize}' fill='${fg}'>${initials}</text></svg>`;
         return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
       }
 
@@ -129,6 +176,7 @@
         img.src = createAvatarDataUrl(initials);
       });
 
+      // If the image is present but 404 prevented load event, check naturalWidth after DOM load
       window.addEventListener('load', () => {
         if (img.naturalWidth === 0) {
           const name = 'Teleola Salimon';
