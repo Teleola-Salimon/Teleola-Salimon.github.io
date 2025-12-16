@@ -1,6 +1,3 @@
-## index.html
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +9,15 @@
 </head>
 <body>
   <!-- Header / Hero -->
-  <header class="hero">
-    <nav class="nav">
+  <header class="hero" id="top">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="brand">Teleola Salimon</div>
-      <div class="nav-links">
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" id="navToggle" title="Open menu">
+        ☰
+      </button>
+
+      <div class="nav-links" id="primary-navigation">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -32,19 +34,21 @@
           and data-driven insights to support strategic and investment decisions.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="Teleola-Salimon-Resume.pdf" target="_blank">Download CV</a>
-          <a class="btn secondary" href="https://www.linkedin.com/in/salimon-teleola" target="_blank">LinkedIn</a>
+          <a class="btn primary" href="Teleola-Salimon-Resume.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/salimon-teleola" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="images/profile.jpg" alt="Portrait of Teleola Salimon" />
+
+      <div class="hero-image" aria-hidden="false">
+        <!-- Profile image expected to live at images/profile.jpg in the repo -->
+        <img id="profileImage" src="images/profile.jpg" alt="Portrait of Teleola Salimon" width="60" height="60" />
       </div>
     </div>
   </header>
 
   <!-- About -->
-  <section id="about" class="section">
-    <h3>About</h3>
+  <section id="about" class="section" aria-labelledby="about-heading">
+    <h3 id="about-heading">About</h3>
     <p class="about-text">
       I am an Economics graduate with strong interests in investment banking, data analytics, and
       financial strategy. I have hands-on experience in financial analysis, portfolio performance
@@ -57,8 +61,8 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="section section-alt">
-    <h3>Projects & Research</h3>
+  <section id="projects" class="section section-alt" aria-labelledby="projects-heading">
+    <h3 id="projects-heading">Projects & Research</h3>
 
     <div class="project-card">
       <h4>Nigerian Economic Overview — H1 Review & H2 Outlook (2025)</h4>
@@ -66,7 +70,8 @@
         Macroeconomic analysis covering inflation trends, fiscal policy, GDP performance,
         and forward-looking indicators to support strategic and investment decisions.
       </p>
-      <a class="link" href="PASTE_H1_H2_DRIVE_LINK_HERE" target="_blank">View Report (PDF)</a>
+      <!-- All PDFs live in one Drive folder; pointing report links to that folder. Replace with direct file links if you have them. -->
+      <a class="link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">View Report (PDF) — Nigerian Economic Overview</a>
     </div>
 
     <div class="project-card">
@@ -76,7 +81,7 @@
         and key financial indicators.
       </p>
       <div class="project-links">
-        <a class="link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank">June and August Report</a>
+        <a class="link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">June and August Report (PDFs in folder)</a>
       </div>
     </div>
 
@@ -86,13 +91,14 @@
         A structured analytical framework explaining Leading Economic Indicators
         and their application in economic forecasting and financial planning.
       </p>
-      <a class="link" href="projects/LEI Conceptual Framework.pptx" target="_blank">View Presentation</a>
+      <!-- Presentation file is expected to be committed to projects/LEI-Conceptual-Framework.pptx in the repo -->
+      <a class="link" href="projects/LEI-Conceptual-Framework.pptx" target="_blank" rel="noopener noreferrer">View Presentation (PPTX)</a>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="section">
-    <h3>Skills</h3>
+  <section id="skills" class="section" aria-labelledby="skills-heading">
+    <h3 id="skills-heading">Skills</h3>
     <div class="skills-grid">
       <div>
         <h5>Core</h5>
@@ -123,212 +129,62 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="section section-alt">
-    <h3>Contact</h3>
+  <section id="contact" class="section section-alt" aria-labelledby="contact-heading">
+    <h3 id="contact-heading">Contact</h3>
     <p>Email: <a class="link" href="mailto:teleolasalimon@gmail.com">teleolasalimon@gmail.com</a></p>
-    <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/salimon-teleola" target="_blank">salimon-teleola</a></p>
+    <p>LinkedIn: <a class="link" href="https://www.linkedin.com/in/salimon-teleola" target="_blank" rel="noopener noreferrer">salimon-teleola</a></p>
     <p>Medium: <span class="muted">Articles coming soon</span></p>
   </section>
 
   <footer class="footer">© 2025 Teleola Salimon</footer>
+
+  <!-- Page scripts: nav toggle and profile image fallback (generate SVG avatar from initials) -->
+  <script>
+    // Mobile nav toggle
+    (function () {
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('primary-navigation');
+
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.title = isOpen ? 'Close menu' : 'Open menu';
+      });
+
+      // Close mobile menu when clicking a link
+      navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && window.innerWidth <= 768) {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // Profile image fallback: if load fails, replace with generated SVG using initials
+    (function () {
+      const img = document.getElementById('profileImage');
+      function createAvatarDataUrl(initials, bg = '#132f55', fg = '#ffffff') {
+        const size = 60;
+        const fontSize = 24;
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 ${size} ${size}'><rect width='100%' height='100%' fill='${bg}' rx='${size/2}' ry='${size/2}'/><text x='50%' y='50%' dy='.06em' text-anchor='middle' font-family='system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' font-size='${fontSize}' fill='${fg}'>${initials}</text></svg>`;
+        return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      }
+
+      img.addEventListener('error', () => {
+        const name = 'Teleola Salimon';
+        const initials = name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
+        img.src = createAvatarDataUrl(initials);
+      });
+
+      // If the image is present but 404 prevented load event, check naturalWidth after DOM load
+      window.addEventListener('load', () => {
+        if (img.naturalWidth === 0) {
+          const name = 'Teleola Salimon';
+          const initials = name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
+          img.src = createAvatarDataUrl(initials);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
-```
-
----
-
-## styles.css
-
-```css
-:root {
-  --navy: #0b1f3a;
-  --navy-light: #132f55;
-  --grey: #f3f5f8;
-  --text: #1f2937;
-  --muted: #6b7280;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  line-height: 1.6;
-}
-
-/* Hero */
-.hero {
-  background: linear-gradient(135deg, var(--navy), var(--navy-light));
-  color: #fff;
-  padding-bottom: 4rem;
-}
-
-.nav {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.brand {
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 1rem;
-  font-size: 0.9rem;
-}
-
-.hero-content {
-  max-width: 1100px;
-  margin: 2.5rem auto 0;
-  padding: 0 1.2rem;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2rem;
-  align-items: center;
-}
-
-.hero-text h1 {
-  font-size: 2.4rem;
-  margin-bottom: 0.3rem;
-}
-
-.hero-text h2 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.hero-summary {
-  max-width: 520px;
-  color: #e5e7eb;
-  margin-bottom: 1.5rem;
-}
-
-.hero-actions .btn {
-  display: inline-block;
-  margin-right: 0.6rem;
-}
-
-.hero-image img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid rgba(255,255,255,0.4);
-}
-
-/* Sections */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3.5rem 1.2rem;
-}
-
-.section-alt {
-  background: var(--grey);
-}
-
-.section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.about-text {
-  max-width: 800px;
-}
-
-/* Projects */
-.project-card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1.2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.project-card h4 {
-  margin-bottom: 0.4rem;
-}
-
-.project-links a {
-  margin-right: 1rem;
-}
-
-/* Skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.skills-grid h5 {
-  margin-bottom: 0.5rem;
-}
-
-.skills-grid ul {
-  list-style: none;
-}
-
-.skills-grid li {
-  margin-bottom: 0.3rem;
-}
-
-/* Buttons & links */
-.btn {
-  padding: 0.6rem 1.2rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.btn.primary {
-  background: #fff;
-  color: var(--navy);
-}
-
-.btn.secondary {
-  border: 1px solid #fff;
-  color: #fff;
-}
-
-.link {
-  color: var(--navy);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1.5rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-image img {
-    margin: 1.2rem auto 0;
-  }
-}
-```
