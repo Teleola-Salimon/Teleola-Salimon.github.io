@@ -13,9 +13,9 @@
     <div class="hero-top">
       <h1 class="brand-large">Teleola Salimon</h1>
 
-      <!-- Profile image top-right (square with smooth edges) -->
+      <!-- Profile image top-right (square with slightly rounded corners) -->
       <div class="hero-profile">
-        <img id="profileImage" src="images/profile.jpg" alt="Portrait of Teleola Salimon" width="120" height="120" />
+        <img id="profileImage" src="images/profile.jpg" alt="Portrait of Teleola Salimon" width="240" height="240" />
       </div>
     </div>
 
@@ -27,13 +27,13 @@
           and data-driven insights to support strategic and investment decisions.
         </p>
 
-        <!-- Top-right links arranged as a 2x2 square, then CV download below -->
+        <!-- Top links arranged as 2x2 capsule grid; Download CV is a capsule below them -->
         <div class="top-links-block" aria-label="Quick links">
           <div class="link-grid" role="navigation" aria-label="Social and contact links">
             <a class="social-link" href="https://github.com/Teleola-Salimon" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="social-link" href="mailto:teleolasalimon@gmail.com">Email</a>
-            <a class="social-link" href="#" aria-disabled="true">Medium</a>
             <a class="social-link" href="https://www.linkedin.com/in/teleola-salimon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="social-link" href="#" aria-disabled="true">Medium</a>
+            <a class="social-link" href="mailto:teleolasalimon@gmail.com">Email</a>
           </div>
 
           <div class="download-wrap">
@@ -52,16 +52,49 @@
     </p>
   </section>
 
-  <!-- Skills (moved before Projects) -->
+  <!-- Skills (kept original groups and added requested skills) -->
   <section id="skills" class="section section-alt" aria-labelledby="skills-heading">
     <h3 id="skills-heading">Skills</h3>
 
-    <div class="skills-grid-cards" role="list">
-      <div class="skill-card" role="listitem">Financial Analysis</div>
-      <div class="skill-card" role="listitem">Financial Economics</div>
-      <div class="skill-card" role="listitem">Business Data Analytics</div>
-      <div class="skill-card" role="listitem">Microsoft Office</div>
-      <div class="skill-card" role="listitem">Data Analysis</div>
+    <div class="skill-grid">
+      <div class="skill-col">
+        <h3>Core</h3>
+        <ul class="skills">
+          <li>Financial Analysis & Portfolio Review</li>
+          <li>Economic & Market Research</li>
+          <li>Data Analysis & Interpretation</li>
+          <li>Investment & Strategy Fundamentals</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <h3>Tools</h3>
+        <ul class="skills">
+          <li>Microsoft Excel, PowerPoint, Word</li>
+          <li>Bloomberg Terminal</li>
+          <li>Canva, CapCut, Premiere Pro</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <h3>Soft Skills</h3>
+        <ul class="skills">
+          <li>Analytical Thinking</li>
+          <li>Professional Communication</li>
+          <li>Collaboration & Stakeholder Engagement</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <h3>Additional / Recent</h3>
+        <ul class="skills">
+          <li>Financial Analysis</li>
+          <li>Financial Economics</li>
+          <li>Business Data Analytics</li>
+          <li>Microsoft Office</li>
+          <li>Data Analysis</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -75,8 +108,7 @@
         Macroeconomic analysis covering inflation trends, fiscal policy, GDP performance,
         and forward-looking indicators to support strategic and investment decisions.
       </p>
-      <!-- All PDFs live in one Drive folder; pointing report links to that folder -->
-      <a class="link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">View Report (PDF) — Nigerian Economic Overview</a>
+      <a class="link project-link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">View Report (PDF) — Nigerian Economic Overview</a>
     </div>
 
     <div class="project-card">
@@ -86,7 +118,7 @@
         and key financial indicators.
       </p>
       <div class="project-links">
-        <a class="link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">June and August Report (PDFs in folder)</a>
+        <a class="link project-link" href="https://drive.google.com/drive/folders/1DLEvbaEMewhlgukZ0oarv1BmmjEjqfUt?usp=drive_link" target="_blank" rel="noopener noreferrer">June and August Report (PDFs in folder)</a>
       </div>
     </div>
 
@@ -96,12 +128,11 @@
         A structured analytical framework explaining Leading Economic Indicators
         and their application in economic forecasting and financial planning.
       </p>
-      <!-- Presentation file is expected to be committed to projects/LEI-Conceptual-Framework.pptx in the repo -->
-      <a class="link" href="projects/LEI-Conceptual-Framework.pptx" target="_blank" rel="noopener noreferrer">View Presentation (PPTX)</a>
+      <a class="link project-link" href="projects/LEI-Conceptual-Framework.pptx" target="_blank" rel="noopener noreferrer">View Presentation (PPTX)</a>
     </div>
   </section>
 
-  <!-- Contact (contact details remain at bottom) -->
+  <!-- Contact (kept at bottom for full contact details) -->
   <section id="contact" class="section section-alt" aria-labelledby="contact-heading">
     <h3 id="contact-heading">Contact</h3>
     <p>Email: <a class="link" href="mailto:teleolasalimon@gmail.com">teleolasalimon@gmail.com</a></p>
@@ -111,14 +142,14 @@
 
   <footer class="footer">© 2025 Teleola Salimon</footer>
 
-  <!-- Page scripts: profile image fallback (generate SVG avatar from initials) -->
+  <!-- Profile image fallback: generate SVG avatar from initials -->
   <script>
     (function () {
       const img = document.getElementById('profileImage');
       function createAvatarDataUrl(initials, bg = '#132f55', fg = '#ffffff') {
-        const size = 120;
-        const fontSize = 42;
-        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 ${size} ${size}'><rect width='100%' height='100%' fill='${bg}' rx='12' ry='12'/><text x='50%' y='50%' dy='.06em' text-anchor='middle' font-family='system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' font-size='${fontSize}' fill='${fg}'>${initials}</text></svg>`;
+        const size = 240;
+        const fontSize = 84;
+        const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 ${size} ${size}'><rect width='100%' height='100%' fill='${bg}' rx='18' ry='18'/><text x='50%' y='50%' dy='.06em' text-anchor='middle' font-family='system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' font-size='${fontSize}' fill='${fg}'>${initials}</text></svg>`;
         return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
       }
 
