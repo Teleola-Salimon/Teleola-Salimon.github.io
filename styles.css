@@ -3,17 +3,14 @@
   --navy-light: #132f55;
   --grey: #f3f5f8;
   --text: #1f2937;
-  --muted: #6b7280;
+  --muted: #6b7280; /* used for muted text like "Articles coming soon" */
   --accent: #ffd54f;
-  --beige: #d7cbb3; /* soft beige/grey for links */
+  --beige: #d7cbb3; /* soft beige/grey (kept available) */
+  --card: rgba(11,31,58,0.06);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--text);
@@ -28,7 +25,7 @@ body {
   padding: 1.2rem 0 3.5rem;
 }
 
-/* Top row in hero: large name left, profile image right */
+/* Top row: large name left, profile right */
 .hero-top {
   max-width: 1100px;
   margin: 0 auto;
@@ -43,19 +40,19 @@ body {
   font-weight: 800;
   letter-spacing: 0.4px;
   color: #fff;
-  margin: 0;
 }
 
+/* Profile: larger, square with slightly rounded corners */
 .hero-profile img {
-  width: 120px;
-  height: 120px;
-  border-radius: 12px; /* square with smooth edges */
+  width: 240px;
+  height: 240px;
+  border-radius: 16px; /* slightly rounded, less pointy */
   object-fit: cover;
   border: 3px solid rgba(255,255,255,0.35);
   display: block;
 }
 
-/* Hero content below the top row */
+/* Hero content below top row */
 .hero-content {
   max-width: 1100px;
   margin: 1.2rem auto 0;
@@ -66,51 +63,35 @@ body {
   align-items: start;
 }
 
-.hero-text h2 {
-  font-size: 1.05rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-}
+.hero-text h2 { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.5rem; }
+.hero-summary { max-width: 720px; color: #e5e7eb; margin-bottom: 1rem; }
 
-.hero-summary {
-  max-width: 720px;
-  color: #e5e7eb;
-  margin-bottom: 1rem;
-}
-
-/* Top links block (2x2 grid of small links, then download) */
-.top-links-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
+/* Top links: 2x2 grid of capsules, download CV below as capsule */
+.top-links-block { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
   gap: 0.5rem;
-  width: min(320px, 100%);
+  width: min(420px, 100%);
 }
-
 .social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.06);
+  background: #fff;           /* capsule like Download CV */
+  color: var(--navy);
   text-decoration: none;
-  padding: 0.55rem 0.6rem;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;       /* capsule */
+  font-weight: 700;
   font-size: 0.95rem;
-  transition: transform .08s ease, background .08s ease;
-  color: var(--beige); /* beige for social links */
+  transition: transform .08s ease, box-shadow .08s ease;
+  box-shadow: 0 2px 10px rgba(11,31,58,0.06);
 }
+.social-link[aria-disabled="true"] { opacity: 0.75; pointer-events: auto; } /* Medium placeholder still clickable but no href */
+.social-link:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(11,31,58,0.08); }
 
-/* Slight hover */
-.social-link:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
-
-/* Download CV sits below the 2x2 links */
+/* Download CV */
 .download-wrap .btn.primary {
   margin-top: 0.4rem;
   display: inline-block;
@@ -119,45 +100,42 @@ body {
   padding: 0.6rem 1.1rem;
   border-radius: 999px;
   text-decoration: none;
+  font-weight: 700;
 }
 
 /* Sections */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2.4rem 1.2rem;
-}
+.section { max-width: 1100px; margin: 0 auto; padding: 2.4rem 1.2rem; }
+.section-alt { background: var(--grey); }
+.section h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+.about-text { max-width: 800px; color: var(--text); }
 
-.section-alt {
-  background: var(--grey);
+/* Skills grid (user-provided style integrated) */
+.skill-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 10px;
 }
-
-.section h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-/* About */
-.about-text {
-  max-width: 800px;
-  color: var(--text);
-}
-
-/* Skills - rectangular transparent light boxes */
-.skills-grid-cards {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.skill-card {
-  background: rgba(11,31,58,0.06);
+.skill-col h3 {
+  margin: 6px 0;
+  font-size: 0.98rem;
   color: var(--navy);
-  padding: 0.55rem 0.9rem; /* padding around each skill */
-  border-radius: 8px;
-  font-weight: 600;
-  min-width: 160px;
+}
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.skills li {
+  background: var(--card);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  border: 1px solid #eef2f7;
 }
 
 /* Projects */
@@ -168,61 +146,41 @@ body {
   margin-bottom: 1rem;
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
+.project-card h4 { margin-bottom: 0.4rem; }
 
-.project-card h4 {
-  margin-bottom: 0.4rem;
-}
-
-/* Project links & generic link styling (use beige so they stand out) */
-.link {
-  color: var(--beige);
+/* Project links: smaller and use the same muted color as "Articles coming soon" */
+.project-link {
+  color: var(--muted);
+  font-size: 0.92rem; /* reduced font size */
   text-decoration: none;
   font-weight: 600;
 }
-.link:hover { text-decoration: underline; }
+.project-link:hover { text-decoration: underline; }
 
-/* Buttons & links */
-.btn {
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  display: inline-block;
-}
+/* Generic link and button styles */
+.btn { padding: 0.6rem 1.1rem; border-radius: 999px; text-decoration: none; font-size: 0.9rem; display: inline-block; }
+.link { color: var(--beige); text-decoration: none; font-weight: 600; }
 
-/* Muted */
-.muted {
-  color: rgba(255,255,255,0.8);
-}
+/* Muted text used in hero and contact */
+.muted { color: rgba(255,255,255,0.85); }
+.section-alt .muted { color: var(--muted); } /* contact muted uses var(--muted) */
 
 /* Footer */
-.footer {
-  text-align: center;
-  padding: 1.2rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
+.footer { text-align: center; padding: 1.2rem; font-size: 0.85rem; color: var(--muted); }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .hero-top {
-    padding: 0.75rem 1rem;
-    gap: 0.8rem;
-  }
-
-  .brand-large { font-size: 1.6rem; }
-
-  .hero-profile img {
-    width: 96px;
-    height: 96px;
-  }
-
-  .link-grid {
+/* Responsive adjustments */
+@media (min-width: 900px) {
+  /* On wider screens display skill columns in a grid-like layout */
+  .skill-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 18px;
   }
-
-  .skill-card { min-width: 140px; }
+}
+@media (max-width: 768px) {
+  .brand-large { font-size: 1.6rem; }
+  .hero-profile img { width: 160px; height: 160px; border-radius: 12px; }
+  .link-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .skill-grid { grid-template-columns: 1fr; }
 }
 
 /* Print */
