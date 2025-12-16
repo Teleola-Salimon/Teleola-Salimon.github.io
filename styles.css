@@ -33,20 +33,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
+/* Increased name font (careful to avoid overlap) and allow it to shrink */
 .brand-large {
-  font-size: 2.2rem;
+  font-size: 2.6rem; /* increased a bit */
   font-weight: 800;
   letter-spacing: 0.4px;
   color: #fff;
+  margin: 0;
+  flex: 1 1 auto;    /* lets the name take available space but shrink if needed */
+  min-width: 0;      /* prevent overflow into the image */
 }
 
 /* Profile: larger, square with slightly rounded corners */
 .hero-profile img {
   width: 240px;
   height: 240px;
-  border-radius: 16px; /* slightly rounded, less pointy */
+  border-radius: 18px; /* slightly rounder corners (less pointy) */
   object-fit: cover;
   border: 3px solid rgba(255,255,255,0.35);
   display: block;
@@ -66,38 +71,40 @@ body {
 .hero-text h2 { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.5rem; }
 .hero-summary { max-width: 720px; color: #e5e7eb; margin-bottom: 1rem; }
 
-/* Top links: 2x2 grid of capsules, download CV below as capsule */
-.top-links-block { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
+/* Top links: 2x2 grid of smaller capsules, download CV below as larger capsule */
+.top-links-block { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
   gap: 0.5rem;
   width: min(420px, 100%);
 }
+
+/* Social capsules — reduced size (smaller than Download CV) */
 .social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #fff;           /* capsule like Download CV */
+  background: #fff;
   color: var(--navy);
   text-decoration: none;
-  padding: 0.6rem 1rem;
-  border-radius: 999px;       /* capsule */
+  padding: 0.42rem 0.7rem;  /* reduced padding to make capsule smaller */
+  border-radius: 999px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;        /* slightly smaller text */
   transition: transform .08s ease, box-shadow .08s ease;
-  box-shadow: 0 2px 10px rgba(11,31,58,0.06);
+  box-shadow: 0 1px 6px rgba(11,31,58,0.04);
 }
-.social-link[aria-disabled="true"] { opacity: 0.75; pointer-events: auto; } /* Medium placeholder still clickable but no href */
-.social-link:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(11,31,58,0.08); }
+.social-link[aria-disabled="true"] { opacity: 0.75; pointer-events: auto; }
+.social-link:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(11,31,58,0.06); }
 
-/* Download CV */
+/* Download CV stays larger than the small social capsules */
 .download-wrap .btn.primary {
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
   display: inline-block;
   background: #fff;
   color: var(--navy);
-  padding: 0.6rem 1.1rem;
+  padding: 0.6rem 1.1rem; /* larger than social capsules */
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
@@ -170,14 +177,13 @@ body {
 
 /* Responsive adjustments */
 @media (min-width: 900px) {
-  /* On wider screens display skill columns in a grid-like layout */
   .skill-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
   }
 }
 @media (max-width: 768px) {
-  .brand-large { font-size: 1.6rem; }
+  .brand-large { font-size: 1.9rem; }
   .hero-profile img { width: 160px; height: 160px; border-radius: 12px; }
   .link-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
   .skill-grid { grid-template-columns: 1fr; }
